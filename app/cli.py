@@ -13,20 +13,24 @@ from sqlalchemy import select
 
 from .config import settings
 from .db import Game, make_session_factory
-from .llm import LLMClient
+from .llm import is_russian_text, make_llm
 from .metacritic import MetacriticClient
 from .monitor import Monitor
 from .pipeline import Pipeline
 
 
 def _needs_summary(summary: dict | None, review_count: int) -> bool:
-    return review_count > 0 and (summary is None or bool(summary.get("error")))
+    if review_count <= 0:
+        return False
+    if summary is None or summary.get("error"):
+        return True
+    return not is_russian_text([summary.get("verdict", "")] + summary.get("likes", []) + summary.get("dislikes", []))
 
 
 async def resummarize() -> None:
     sf = make_session_factory(settings.database_url)
     mc = MetacriticClient()
-    llm = LLMClient(settings.llm_api_key, settings.llm_model, base_url=settings.llm_base_url)
+    llm = make_llm(settings)
     pipeline = Pipeline(sf, mc, llm, Monitor(), settings)
     llm.set_hooks(pipeline.check_budget, pipeline.record_usage)
     with sf() as s:
@@ -36,6 +40,10 @@ async def resummarize() -> None:
             if _needs_summary(g.critic_summary, g.critic_review_count) or _needs_summary(g.user_summary, g.user_review_count)
         ]
     print(f"games to resummarize: {len(slugs)}")
+    with sf.begin() as s:
+        for g in s.scalars(select(Game).where(Game.slug.in_(slugs))):
+            g.critic_reviews_fp = None
+            g.user_reviews_fp = None
     try:
         for slug in slugs:
             try:

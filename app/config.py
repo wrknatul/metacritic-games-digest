@@ -4,7 +4,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    # Any OpenAI-compatible gateway: AnyModel by default, OpenRouter works too
+    # "openai": any OpenAI-compatible gateway (AnyModel by default, OpenRouter works too)
+    # "claude_cli": Claude through the local Claude Code CLI (`claude -p`), no API key needed
+    llm_provider: str = "openai"
+    claude_cli_model: str = "haiku"
     llm_base_url: str = "https://anymodel.org/v1"
     llm_api_key: str = ""
     llm_model: str = "ag/gemini-3-flash"

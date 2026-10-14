@@ -21,7 +21,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .config import settings
 from .db import Game, GamePlatform, Run, make_session_factory
-from .llm import LLMClient
+from .llm import make_llm
 from .metacritic import MetacriticClient
 from .monitor import Monitor
 from .pipeline import AlreadyRunning, Pipeline
@@ -75,7 +75,7 @@ async def lifespan(app: FastAPI):
         )
     monitor = Monitor()
     mc = MetacriticClient()
-    llm = LLMClient(settings.llm_api_key, settings.llm_model, base_url=settings.llm_base_url)
+    llm = make_llm(settings)
     pipeline = Pipeline(sf, mc, llm, monitor, settings)
     llm.set_hooks(pipeline.check_budget, pipeline.record_usage)
 

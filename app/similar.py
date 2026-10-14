@@ -27,6 +27,32 @@ _STOP = set(
 
 W_TEXT, W_GENRE, W_FRANCHISE, W_DEVELOPER = 0.55, 0.30, 0.10, 0.05
 
+# Metacritic genres are short labels: "FPS" and "Third Person Shooter" share nothing as strings,
+# so genres are also compared word by word, with abbreviations expanded
+GENRE_SYNONYMS = {
+    "fps": "first person shooter",
+    "tps": "third person shooter",
+    "rpg": "role playing",
+    "jrpg": "japanese role playing",
+    "arpg": "action role playing",
+    "mmorpg": "massively multiplayer role playing",
+    "rts": "real time strategy",
+    "moba": "multiplayer battle arena",
+    "4x": "strategy",
+    "roguelike": "roguelike rogue",
+    "roguelite": "roguelike rogue",
+    "metroidvania": "metroidvania platformer action",
+}
+GENRE_STOP = {"person", "first", "third", "game", "games", "general", "misc", "miscellaneous", "and", "the", "of"}
+
+
+def _genre_words(genres: list[str]) -> set[str]:
+    words: set[str] = set()
+    for g in genres:
+        for w in _TOKEN_RE.findall(g.lower().replace("-", " ")) + [g.lower()]:
+            words.update(GENRE_SYNONYMS.get(w, w).split())
+    return {w for w in words if w not in GENRE_STOP and len(w) > 2}
+
 
 @dataclass
 class GameFeatures:
@@ -73,6 +99,7 @@ class SimilarityIndex:
             return []
         my_vec = self.vectors.get(game_id, {})
         my_genres = {g.lower() for g in me.genres}
+        my_genre_words = _genre_words(me.genres)
         scored: list[SimilarGame] = []
         for other in self.games.values():
             if other.id == game_id:
@@ -87,6 +114,13 @@ class SimilarityIndex:
             if genre:
                 shared = [g for g in other.genres if g.lower() in my_genres]
                 reasons.append("жанр: " + ", ".join(shared))
+            else:
+                other_words = _genre_words(other.genres)
+                common = my_genre_words & other_words
+                if common:
+                    # related genres count less than the same genre
+                    genre = 0.6 * len(common) / len(my_genre_words | other_words)
+                    reasons.append(f"похожий жанр: {', '.join(other.genres)}")
             franchise = 1.0 if me.franchise and me.franchise == other.franchise else 0.0
             if franchise:
                 reasons.append(f"серия: {me.franchise}")

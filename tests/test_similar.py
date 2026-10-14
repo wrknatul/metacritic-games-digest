@@ -32,3 +32,14 @@ def test_unknown_game_and_self_exclusion():
     idx = SimilarityIndex(GAMES)
     assert idx.similar(999) == []
     assert all(s.id != 5 for s in idx.similar(5))
+
+
+def test_related_genres_match_word_by_word():
+    games = [
+        g(1, "Gears of War: E-Day", "Brutal campaign against the horde", ["Third Person Shooter"]),
+        g(2, "Boltgun 2", "Retro shooter in the Warhammer universe", ["FPS"]),
+        g(3, "Planet Zoo 2", "Build a zoo and care for animals", ["Tycoon"]),
+    ]
+    top = SimilarityIndex(games).similar(1)
+    assert [s.slug for s in top] == ["g2"]
+    assert top[0].reasons == ["похожий жанр: FPS"]
