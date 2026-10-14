@@ -45,6 +45,15 @@ class YouTubeBlocked(LetsPlayError):
     """YouTube refused the request (bot check, 403, 429) from this IP."""
 
 
+class YouTubeUnreachable(LetsPlayError):
+    """No network path to YouTube right now (DNS, refused, timeout): retry later, the game is fine."""
+
+
+def _is_network_error(stderr: str) -> bool:
+    s = stderr.lower()
+    return any(x in s for x in ("unable to download api page", "errno", "timed out", "connection refused", "name or service not known", "nodename nor servname"))
+
+
 @dataclass
 class VideoCandidate:
     id: str
@@ -149,6 +158,8 @@ async def search(game_title: str) -> list[VideoCandidate]:
     if code != 0:
         if _is_blocked(err):
             raise YouTubeBlocked(err.strip()[-300:])
+        if _is_network_error(err):
+            raise YouTubeUnreachable(err.strip()[-300:])
         raise LetsPlayError(f"search failed: {err.strip()[-300:]}")
     data = json.loads(out)
     result = []

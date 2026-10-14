@@ -99,3 +99,37 @@ async def test_blocked_when_every_strategy_is_refused(pipeline, monkeypatch):
     await run_and_collect(pipeline)
     gid = pipeline.claim_letsplay()
     assert await pipeline.run_letsplay(gid) == "blocked"
+
+
+async def test_llm_out_of_balance_keeps_the_game_pending(pipeline, monkeypatch):
+    from app.llm import LLMUnavailable
+
+    async def search(title):
+        return [lp.VideoCandidate("v1", f"{title} let's play part 1", "Chan", 5, 1800)]
+
+    async def captions(video, minutes):
+        return TEXT
+
+    async def no_balance(*a):
+        raise LLMUnavailable("LLM HTTP 402: balance has run out")
+
+    monkeypatch.setattr(lp, "search", search)
+    monkeypatch.setattr(lp, "fetch_captions", captions)
+    pipeline.llm.letsplay_conclusion = no_balance
+    await run_and_collect(pipeline)
+    gid = pipeline.claim_letsplay()
+    assert await pipeline.run_letsplay(gid) == "llm_unavailable"
+    with pipeline.sf() as s:
+        assert s.get(Game, gid).letsplay_status == "pending"
+
+
+async def test_network_error_on_search_keeps_the_game_pending(pipeline, monkeypatch):
+    async def offline(title):
+        raise lp.YouTubeUnreachable("Unable to download API page: [Errno 61] Connection refused")
+
+    monkeypatch.setattr(lp, "search", offline)
+    await run_and_collect(pipeline)
+    gid = pipeline.claim_letsplay()
+    assert await pipeline.run_letsplay(gid) == "youtube_unreachable"
+    with pipeline.sf() as s:
+        assert s.get(Game, gid).letsplay_status == "pending"

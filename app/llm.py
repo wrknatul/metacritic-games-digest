@@ -23,6 +23,10 @@ class BudgetExceeded(LLMError):
     pass
 
 
+class LLMUnavailable(LLMError):
+    """The gateway refuses every call (bad key, no balance): waiting helps, retrying each item does not."""
+
+
 class ReviewSummary(BaseModel):
     verdict: str = Field(description="1-2 sentences: the overall opinion of this group of reviewers")
     likes: list[str] = Field(description="What reviewers like, up to 5 short points")
@@ -128,6 +132,8 @@ class LLMClient:
             )
         except httpx.HTTPError as exc:
             raise LLMError(f"LLM request failed: {exc}") from exc
+        if resp.status_code in (401, 402, 403):
+            raise LLMUnavailable(f"LLM HTTP {resp.status_code}: {resp.text[:300]}")
         if resp.status_code != 200:
             raise LLMError(f"LLM HTTP {resp.status_code}: {resp.text[:300]}")
         data = resp.json()

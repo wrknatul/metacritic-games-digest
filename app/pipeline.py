@@ -13,7 +13,7 @@ from sqlalchemy.orm import sessionmaker
 from . import letsplay as lp
 from .config import Settings
 from .db import DailyCursor, DailyProcessed, Game, GamePlatform, LlmUsage, Run, utcnow
-from .llm import BudgetExceeded, LLMClient, LLMError
+from .llm import BudgetExceeded, LLMClient, LLMError, LLMUnavailable
 from .metacritic import GameDetails, MetacriticClient, MetacriticError, ReviewSample
 from .monitor import Monitor, RunProgress, WorkerState
 
@@ -25,6 +25,7 @@ GAME_TIMEOUT_S = 180
 LETSPLAY_TIMEOUT_S = 600
 LETSPLAY_BLOCKED_STREAK = 3
 LETSPLAY_BLOCKED_PAUSE_S = 15 * 60
+LLM_UNAVAILABLE_PAUSE_S = 10 * 60
 
 
 class AlreadyRunning(Exception):
@@ -439,6 +440,11 @@ class Pipeline:
                 status = await self.run_letsplay(game_id, w)
             finally:
                 self._lp_inflight.discard(game_id)
+            if status in ("llm_unavailable", "youtube_unreachable"):
+                reason = "LLM недоступен (ключ или баланс)" if status == "llm_unavailable" else "нет связи с YouTube"
+                self.monitor.stage(w, f"пауза 10 мин: {reason}")
+                await asyncio.sleep(LLM_UNAVAILABLE_PAUSE_S)
+                continue
             blocked_streak = blocked_streak + 1 if status == "blocked" else 0
             if blocked_streak >= LETSPLAY_BLOCKED_STREAK:
                 self.monitor.event("warn", f"YouTube отказал {blocked_streak} раза подряд, пауза {LETSPLAY_BLOCKED_PAUSE_S // 60} мин")
@@ -455,6 +461,17 @@ class Pipeline:
             return status
         except asyncio.CancelledError:
             raise
+        except lp.YouTubeUnreachable as exc:
+            self.monitor.event("warn", f"летсплей игры #{game_id} отложен: нет связи с YouTube ({str(exc)[-120:]})")
+            if w:
+                self.monitor.idle(w, ok=False, error=str(exc)[-300:])
+            return "youtube_unreachable"
+        except (LLMUnavailable, BudgetExceeded) as exc:
+            # the game stays pending: nothing is wrong with it, the LLM is out for now
+            self.monitor.event("warn", f"летсплей игры #{game_id} отложен: {str(exc)[:160]}")
+            if w:
+                self.monitor.idle(w, ok=False, error=str(exc)[:300])
+            return "llm_unavailable"
         except Exception as exc:
             err = f"{type(exc).__name__}: {exc}"
             self._save_letsplay(game_id, "failed", {"error": err[:500]})
