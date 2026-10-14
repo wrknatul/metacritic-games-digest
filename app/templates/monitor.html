@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Мониторинг · Games Digest{% endblock %}
+{% block content %}
+<div class="monitor-head">
+  <h1>Мониторинг</h1>
+  <div>
+    <span id="conn" class="pill">подключение…</span>
+    <button id="run-btn" type="button">Запустить обработку сейчас</button>
+  </div>
+</div>
+<p id="run-msg" class="muted" role="status"></p>
+
+<section class="tiles" id="tiles"></section>
+
+<section class="panel">
+  <h2>Текущий запуск</h2>
+  <div id="run"></div>
+</section>
+
+<section class="panel">
+  <h2>Воркеры</h2>
+  <table class="table"><thead><tr><th>Воркер</th><th>Статус</th><th>Игра</th><th>Этап</th><th>Сколько</th><th>Готово / ошибок</th></tr></thead>
+  <tbody id="workers"></tbody></table>
+</section>
+
+<div class="two-col">
+  <section class="panel">
+    <h2>Последние запуски</h2>
+    <table class="table"><thead><tr><th>#</th><th>Тип</th><th>Статус</th><th>Начало</th><th>Игр</th><th>Ошибок</th><th>Новых</th></tr></thead>
+    <tbody id="runs"></tbody></table>
+  </section>
+  <section class="panel">
+    <h2>Журнал</h2>
+    <ol id="log" class="log"></ol>
+  </section>
+</div>
+{% endblock %}
+{% block scripts %}
+<script id="initial" type="application/json">{{ initial|safe }}</script>
+<script src="/static/monitor.js"></script>
+{% endblock %}

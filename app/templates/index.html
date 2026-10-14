@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "_score.html" import meta, user %}
+{% block content %}
+<form class="filters" method="get" action="/">
+  <input type="search" name="q" value="{{ q }}" placeholder="Поиск по названию" aria-label="Поиск по названию">
+  <select name="platform" aria-label="Платформа">
+    <option value="">Все платформы</option>
+    {% for name, n in platforms %}
+    <option value="{{ name }}" {% if name == platform %}selected{% endif %}>{{ name }} ({{ n }})</option>
+    {% endfor %}
+  </select>
+  <select name="sort" aria-label="Сортировка">
+    {% for key, label in sorts.items() %}
+    <option value="{{ key }}" {% if key == sort %}selected{% endif %}>Сортировка: {{ label }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Показать</button>
+  {% if q or platform %}<a class="reset" href="/?sort={{ sort }}">сбросить</a>{% endif %}
+</form>
+
+<p class="muted">Найдено игр: {{ total }}</p>
+
+{% if not games %}
+<div class="empty">
+  <p>Игр пока нет.{% if not q and not platform %} Первый запуск обработки идёт по расписанию, ход виден на странице <a href="/monitor">мониторинга</a>.{% endif %}</p>
+</div>
+{% endif %}
+
+<ul class="grid">
+  {% for g in games %}
+  <li class="card">
+    <a class="cover" href="/games/{{ g.slug }}">
+      {% if g.cover_url %}<img src="{{ g.cover_url }}" alt="" loading="lazy">{% else %}<span class="nocover">нет обложки</span>{% endif %}
+    </a>
+    <div class="card-body">
+      <a class="title" href="/games/{{ g.slug }}">{{ g.title }}</a>
+      <div class="meta-line">{{ g.release_date or 'дата неизвестна' }}{% if g.developer %} · {{ g.developer }}{% endif %}</div>
+      <div class="scores">{{ meta(g.metascore) }} {{ user(g.userscore) }}</div>
+      <div class="chips">
+        {% for p in g.platforms %}<span class="chip">{{ p.name }}</span>{% endfor %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if pages > 1 %}
+<nav class="pager">
+  {% if page > 1 %}<a href="?q={{ q|urlencode }}&platform={{ platform|urlencode }}&sort={{ sort }}&page={{ page - 1 }}">← назад</a>{% endif %}
+  <span>стр. {{ page }} из {{ pages }}</span>
+  {% if page < pages %}<a href="?q={{ q|urlencode }}&platform={{ platform|urlencode }}&sort={{ sort }}&page={{ page + 1 }}">дальше →</a>{% endif %}
+</nav>
+{% endif %}
+{% endblock %}

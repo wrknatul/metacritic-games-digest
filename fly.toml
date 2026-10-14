@@ -1,0 +1,36 @@
+app = "games-digest-lutan"
+primary_region = "ams"
+
+[build]
+
+[env]
+  DATABASE_URL = "sqlite:////data/games.db"
+  RUN_INTERVAL_MINUTES = "60"
+  GAMES_PER_RUN = "20"
+  DETAIL_WORKERS = "4"
+  LETSPLAY_ENABLED = "true"
+  LLM_MODEL = "ag/gemini-3-flash"
+  LLM_BASE_URL = "https://anymodel.org/v1"
+
+[[mounts]]
+  source = "games_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  # the scheduler lives in the process: the machine must not be stopped when idle
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "20s"
+    interval = "30s"
+    method = "GET"
+    path = "/api/health"
+    timeout = "5s"
+
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "1gb"

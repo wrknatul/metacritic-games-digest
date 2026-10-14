@@ -1,0 +1,260 @@
+{
+ "components": [
+  {
+   "data": {
+    "item": {
+     "id": 1300639555,
+     "type": "game-title",
+     "title": "Gears of War: E-Day",
+     "slug": "gears-of-war-e-day",
+     "description": "Experience the brutal horror of Emergence Day through the eyes of Marcus Fenix in the origin story of one of gaming's most acclaimed sagas.​ \r\n\r\nFourteen years before Gears of War, war heroes Marcus Fenix and Dom Santiago return home to face a new nightmare: the Locust Horde. These subterranean monsters, grotesque and relentless, erupt from below, laying siege on humanity itself. ​\r\n\r\nBuilt from t",
+     "platform": "Xbox Series X",
+     "criticScoreSummary": {
+      "url": "/game/gears-of-war-e-day/critic-reviews/",
+      "max": 100,
+      "score": 88,
+      "normalizedScore": 87.5278,
+      "reviewCount": 74,
+      "positiveCount": 57,
+      "neutralCount": 5,
+      "negativeCount": 0,
+      "sentiment": "Generally favorable"
+     },
+     "releaseDate": "2026-10-06",
+     "production": {
+      "companies": [
+       {
+        "id": 4000114824,
+        "typeId": 1,
+        "typeName": "Developer",
+        "name": "The Coalition",
+        "url": "/company/the-coalition/"
+       },
+       {
+        "id": 4000136917,
+        "typeId": 2,
+        "typeName": "Publisher",
+        "name": "Xbox Game Studios",
+        "url": "/company/xbox-game-studios/"
+       }
+      ],
+      "officialSite": null,
+      "crew": [
+       {
+        "id": 3000224007,
+        "name": "John DiMaggio",
+        "roles": [
+         "Cast: Marcus Fenix"
+        ],
+        "slug": "john-dimaggio"
+       }
+      ]
+     },
+     "images": [
+      {
+       "id": "7-1780856345",
+       "filename": "7-1780856345.jpg",
+       "dateCreated": {
+        "date": null,
+        "timezone": null
+       },
+       "alt": null,
+       "credits": null,
+       "path": null,
+       "cropGravity": null,
+       "crop": null,
+       "caption": null,
+       "typeName": "mainImage",
+       "imageUrl": null,
+       "width": 460,
+       "height": 215,
+       "sType": null,
+       "bucketType": "catalog",
+       "bucketPath": "/provider/7/2/7-1780856345.jpg",
+       "mediaType": null,
+       "provider": "7"
+      },
+      {
+       "id": "7-1788246859",
+       "filename": "7-1788246859.jpg",
+       "dateCreated": {
+        "date": null,
+        "timezone": null
+       },
+       "alt": null,
+       "credits": null,
+       "path": null,
+       "cropGravity": null,
+       "crop": null,
+       "caption": null,
+       "typeName": "cardImage",
+       "imageUrl": null,
+       "width": 279,
+       "height": 425,
+       "sType": null,
+       "bucketType": "catalog",
+       "bucketPath": "/provider/7/2/7-1788246859.jpg",
+       "mediaType": null,
+       "provider": "7"
+      }
+     ],
+     "video": {
+      "videoId": 10276927,
+      "slug": "gears-of-war-e-day",
+      "title": "Gears of War: E-Day &#8211; Official Multiplayer Gameplay Reveal Trailer",
+      "videoTitle": "Gears of War: E-Day &#8211; Official Multiplayer Gameplay Reveal Trailer",
+      "duration": 140,
+      "providerId": null,
+      "type": null,
+      "contentType": null,
+      "contentTypeId": 0,
+      "url": null,
+      "description": null,
+      "originalAirDate": "2026-07-30T06:19:10.000+00:00",
+      "displayDatePublished": {
+       "date": "2026-07-30T06:19:10.000+00:00",
+       "timezone": null
+      },
+      "seasonNumber": null,
+      "episodeNumber": null,
+      "images": [],
+      "jwPlayerId": "OS5QJ3dJ",
+      "manifestUrl": "https://cdn.jwplayer.com/manifests/OS5QJ3dJ.m3u8",
+      "embedUrl": "https://cdn.jwplayer.com/players/OS5QJ3dJ.html"
+     },
+     "genres": [
+      {
+       "id": 2300631971,
+       "name": "Third Person Shooter"
+      }
+     ],
+     "rating": "M",
+     "platforms": [
+      {
+       "id": 1500000129,
+       "name": "Xbox Series X",
+       "criticScoreSummary": {
+        "url": "/game/gears-of-war-e-day/critic-reviews/?platform=xbox-series-x",
+        "max": 100,
+        "score": 88,
+        "normalizedScore": 87.5278,
+        "reviewCount": 74,
+        "positiveCount": 57,
+        "neutralCount": 5,
+        "negativeCount": 0,
+        "sentiment": "Generally favorable"
+       },
+       "relatedGameId": 1400773610,
+       "isLeadPlatform": true,
+       "releaseDate": "2026-10-06",
+       "slug": "xbox-series-x"
+      },
+      {
+       "id": 1500000019,
+       "name": "PC",
+       "criticScoreSummary": {
+        "url": "/game/gears-of-war-e-day/critic-reviews/?platform=pc",
+        "max": 100,
+        "score": 83,
+        "normalizedScore": 82.7045,
+        "reviewCount": 44,
+        "positiveCount": 35,
+        "neutralCount": 5,
+        "negativeCount": 0,
+        "sentiment": "Generally favorable"
+       },
+       "relatedGameId": 1400773617,
+       "isLeadPlatform": false,
+       "releaseDate": "2026-10-06",
+       "slug": "pc"
+      }
+     ],
+     "gameTaxonomy": {
+      "franchises": [
+       {
+        "id": 1100001035,
+        "name": "Gears of War"
+       }
+      ],
+      "family": {
+       "id": 1200631971,
+       "name": "Gears of War: E-Day"
+      },
+      "title": {
+       "id": 1300639555,
+       "name": "Gears of War: E-Day"
+      },
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1500000129,
+       "name": "Xbox Series X"
+      }
+     }
+    }
+   },
+   "links": {
+    "self": {
+     "href": "https://backend.metacritic.com/games/metacritic/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&componentName=product&componentDisplayName=Product&componentType=Product"
+    }
+   },
+   "meta": {
+    "componentName": "product",
+    "componentDisplayName": "Product",
+    "componentType": "Product"
+   }
+  },
+  {
+   "data": {
+    "item": {
+     "id": null,
+     "max": 100,
+     "score": 88,
+     "reviewCount": 62,
+     "positiveCount": 57,
+     "neutralCount": 5,
+     "negativeCount": 0,
+     "sentiment": "Generally favorable",
+     "url": "/game/gears-of-war-e-day/critic-reviews/?platform=xbox-series-x"
+    }
+   },
+   "links": {
+    "self": {
+     "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/stats/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&componentName=critic-score-summary&componentDisplayName=Critic+Score+Summary&componentType=MetaScoreSummary"
+    }
+   },
+   "meta": {
+    "componentName": "critic-score-summary",
+    "componentDisplayName": "Critic Score Summary",
+    "componentType": "MetaScoreSummary"
+   }
+  },
+  {
+   "data": {
+    "item": {
+     "id": "1400773610",
+     "max": 10,
+     "score": 8.7,
+     "reviewCount": 1585,
+     "positiveCount": 1366,
+     "neutralCount": 56,
+     "negativeCount": 163,
+     "sentiment": "Generally favorable",
+     "url": "/game/gears-of-war-e-day/user-reviews/?platform=xbox-series-x"
+    }
+   },
+   "links": {
+    "self": {
+     "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/stats/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&componentName=user-score-summary&componentDisplayName=User+Score+Summary&componentType=MetaScoreSummary"
+    }
+   },
+   "meta": {
+    "componentName": "user-score-summary",
+    "componentDisplayName": "User Score Summary",
+    "componentType": "MetaScoreSummary"
+   }
+  }
+ ]
+}

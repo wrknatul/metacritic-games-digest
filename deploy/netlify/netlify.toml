@@ -1,0 +1,10 @@
+# Stable public address for the service: every request is proxied to the backend tunnel.
+# Deploy from this folder: netlify deploy --prod --dir public
+[build]
+  publish = "public"
+
+[[redirects]]
+  from = "/*"
+  to = "https://dude-cached-anatomy-upload.trycloudflare.com/:splat"
+  status = 200
+  force = true

@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% from "_score.html" import meta, user %}
+{% block title %}{{ g.title }} · Games Digest{% endblock %}
+
+{% macro summary_block(title, s, empty_text) -%}
+<section class="panel">
+  <h2>{{ title }}</h2>
+  {% if not s %}
+    <p class="muted">{{ empty_text }}</p>
+  {% elif s.error %}
+    <p class="muted">Резюме пока не построено: {{ s.error }}</p>
+  {% else %}
+    <p class="verdict">{{ s.verdict }}</p>
+    <div class="pros-cons">
+      <div>
+        <h3>Нравится</h3>
+        {% if s.likes %}<ul class="pros">{% for x in s.likes %}<li>{{ x }}</li>{% endfor %}</ul>{% else %}<p class="muted">ничего не выделено</p>{% endif %}
+      </div>
+      <div>
+        <h3>Не нравится</h3>
+        {% if s.dislikes %}<ul class="cons">{% for x in s.dislikes %}<li>{{ x }}</li>{% endfor %}</ul>{% else %}<p class="muted">претензий нет</p>{% endif %}
+      </div>
+    </div>
+    <p class="muted small">По выборке из {{ s.sample_size }} отзывов (всего {{ s.total }}: +{{ s.counts.positive }} / ±{{ s.counts.neutral }} / −{{ s.counts.negative }}). {{ s.model }}, {{ s.generated_at[:16]|replace('T', ' ') }} UTC</p>
+  {% endif %}
+</section>
+{%- endmacro %}
+
+{% block content %}
+<p><a href="/">← все игры</a></p>
+<article class="game">
+  <div class="game-head">
+    {% if g.cover_url %}<img class="game-cover" src="{{ g.cover_url }}" alt="Обложка {{ g.title }}">{% endif %}
+    <div>
+      <h1>{{ g.title }}</h1>
+      <dl class="facts">
+        <dt>Выход</dt><dd>{{ g.release_date or '—' }}</dd>
+        <dt>Разработчик</dt><dd>{{ g.developer or '—' }}</dd>
+        {% if g.publisher %}<dt>Издатель</dt><dd>{{ g.publisher }}</dd>{% endif %}
+        {% if g.genres %}<dt>Жанр</dt><dd>{{ g.genres|join(', ') }}</dd>{% endif %}
+        {% if g.franchise %}<dt>Серия</dt><dd>{{ g.franchise }}</dd>{% endif %}
+      </dl>
+      <table class="platforms">
+        <thead><tr><th>Платформа</th><th>Metascore</th><th>Userscore</th></tr></thead>
+        <tbody>
+        {% for p in g.platforms %}
+          <tr>
+            <td>{{ p.name }}{% if p.is_lead %} <span class="muted small">основная</span>{% endif %}</td>
+            <td>{{ meta(p.metascore) }} <span class="muted small">{{ p.critic_reviews }} рец.</span></td>
+            <td>{{ user(p.userscore) }} <span class="muted small">{{ p.user_reviews }} оценок</span></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <p class="small"><a href="https://www.metacritic.com/game/{{ g.slug }}/" target="_blank" rel="noopener">Страница на Metacritic ↗</a></p>
+    </div>
+  </div>
+
+  {% if g.description %}
+  <section class="panel"><h2>Описание</h2><div class="description">{{ g.description }}</div></section>
+  {% endif %}
+
+  <section class="panel">
+    <h2>Видео</h2>
+    {% if g.video_url %}
+      <p>{{ g.video_title or 'Трейлер' }} · <a href="{{ g.video_url }}" target="_blank" rel="noopener">открыть ↗</a></p>
+      <div class="video"><iframe src="{{ g.video_url }}" title="{{ g.video_title or 'Трейлер' }}" loading="lazy" allowfullscreen></iframe></div>
+    {% else %}
+      <p class="muted">На Metacritic нет видео для этой игры.</p>
+    {% endif %}
+  </section>
+
+  {{ summary_block('Что говорят критики', g.critic_summary, 'Рецензий критиков пока нет.') }}
+  {{ summary_block('Что говорят игроки', g.user_summary, 'Отзывов игроков пока нет.') }}
+
+  <section class="panel">
+    <h2>Летсплей на YouTube</h2>
+    {% set lp = g.letsplay %}
+    {% if g.letsplay_status == 'done' and lp %}
+      <p><a href="{{ lp.url }}" target="_blank" rel="noopener">{{ lp.title }}</a> · {{ lp.channel }} · {{ lp.views|views }} просмотров</p>
+      <p class="verdict">{{ lp.conclusion }}</p>
+      {% if lp.impressions %}<ul>{% for x in lp.impressions %}<li>{{ x }}</li>{% endfor %}</ul>{% endif %}
+      <details>
+        <summary>Расшифровка первых {{ lp.transcript_minutes }} мин (способ: {{ {'captions': 'субтитры YouTube', 'audio': 'аудио → Gemini', 'gemini_video': 'видео → Gemini'}.get(lp.transcript_source, lp.transcript_source) }})</summary>
+        <p class="transcript">{{ lp.transcript }}</p>
+      </details>
+    {% elif g.letsplay_status == 'not_found' %}
+      <p class="muted">Летсплей не найден: по запросу «{{ g.title }} let's play» нет роликов длиннее 5 минут об этой игре.</p>
+    {% elif g.letsplay_status in ('failed', 'blocked') and lp %}
+      <p>Найден ролик: <a href="{{ lp.url }}" target="_blank" rel="noopener">{{ lp.title }}</a> · {{ lp.channel }} · {{ lp.views|views }} просмотров</p>
+      <p class="muted">Текст получить не удалось{% if g.letsplay_status == 'blocked' %}: YouTube ограничивает запросы с IP сервера{% endif %}. Повторная попытка при следующих обходах.</p>
+      {% if lp.errors %}<details><summary>Подробности</summary><ul class="small">{% for e in lp.errors %}<li>{{ e }}</li>{% endfor %}</ul></details>{% endif %}
+    {% elif g.letsplay_status == 'failed' %}
+      <p class="muted">Ошибка при поиске летсплея{% if lp and lp.error %}: {{ lp.error }}{% endif %}.</p>
+    {% else %}
+      <p class="muted">Летсплей ещё не обработан, он в очереди.</p>
+    {% endif %}
+  </section>
+
+  <section class="panel">
+    <h2>Похожие игры</h2>
+    {% if similar %}
+    <ul class="similar">
+      {% for s in similar %}
+      <li><a href="/games/{{ s.slug }}">{{ s.title }}</a> <span class="muted small">{{ s.reasons|join(' · ') or 'похожее описание' }}</span></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">В базе пока нет похожих игр.</p>
+    {% endif %}
+  </section>
+
+  <p class="muted small">Обновлено {{ g.updated_at.strftime('%Y-%m-%d %H:%M') }} UTC</p>
+</article>
+{% endblock %}

@@ -1,0 +1,184 @@
+{
+ "data": {
+  "id": "1400773610",
+  "totalResults": 659,
+  "items": [
+   {
+    "id": "6415b1a7-6fd1-4bdf-8dd8-cc916aa60d19",
+    "quote": "A fantastic entry to the series. Easily the best gears since 3. The new movement system is great, weapons feel punchy, gore is crunchy/chunky, horde is a blast, and PVP is solid. The story (while it plays safe for the most part IMO) is decently written and its paired with incredible set pieces. Their are a few slow down areas which do take you out of the action for a little while but I didn't really mind them. Overall a fantastic game though.",
+    "score": 9,
+    "thumbsUp": null,
+    "thumbsDown": null,
+    "date": "2026-10-14",
+    "author": "PopeOnaRope123",
+    "version": 1791999615673,
+    "spoiler": false,
+    "reviewedProduct": {
+     "id": 1400773610,
+     "type": "games",
+     "title": "Gears of War: E-Day",
+     "url": "/game/gears-of-war-e-day/",
+     "platform": {
+      "id": 1500000129,
+      "name": "Xbox Series X"
+     },
+     "gameTaxonomy": {
+      "family": {
+       "id": 1200631971,
+       "name": "Gears of War: E-Day"
+      },
+      "title": {
+       "id": 1300639555,
+       "name": "Gears of War: E-Day"
+      },
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1500000129,
+       "name": "Xbox Series X"
+      }
+     }
+    },
+    "platform": "Xbox Series X"
+   },
+   {
+    "id": "63632b20-c83f-4395-a9c7-20756bfe743e",
+    "quote": "Classic Gears gameplay, great atmosphere, and an awesome campaign. Ignore the rage bait and judge for yourself. Honestly, one of the best campaigns I’ve played in years.",
+    "score": 10,
+    "thumbsUp": null,
+    "thumbsDown": null,
+    "date": "2026-10-14",
+    "author": "selloween",
+    "version": 1791998601651,
+    "spoiler": false,
+    "reviewedProduct": {
+     "id": 1400773610,
+     "type": "games",
+     "title": "Gears of War: E-Day",
+     "url": "/game/gears-of-war-e-day/",
+     "platform": {
+      "id": 1500000129,
+      "name": "Xbox Series X"
+     },
+     "gameTaxonomy": {
+      "family": {
+       "id": 1200631971,
+       "name": "Gears of War: E-Day"
+      },
+      "title": {
+       "id": 1300639555,
+       "name": "Gears of War: E-Day"
+      },
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1500000129,
+       "name": "Xbox Series X"
+      }
+     }
+    },
+    "platform": "Xbox Series X"
+   },
+   {
+    "id": "b2a3adcb-cfae-4bde-a640-54dfe3496abf",
+    "quote": "If you love the old Gears of wars you will love this one. Campaign brings it back to 4 player coop with your buddies like it was in Gears of War 3. Multi-player feels like Gears of war 1. Horde is fun and different. I would like classic horde were it is 1 threw 50 waves. But I can see them adding that later. ",
+    "score": 10,
+    "thumbsUp": null,
+    "thumbsDown": null,
+    "date": "2026-10-14",
+    "author": "Tinnykiller",
+    "version": 1791996830526,
+    "spoiler": false,
+    "reviewedProduct": {
+     "id": 1400773610,
+     "type": "games",
+     "title": "Gears of War: E-Day",
+     "url": "/game/gears-of-war-e-day/",
+     "platform": {
+      "id": 1500000129,
+      "name": "Xbox Series X"
+     },
+     "gameTaxonomy": {
+      "family": {
+       "id": 1200631971,
+       "name": "Gears of War: E-Day"
+      },
+      "title": {
+       "id": 1300639555,
+       "name": "Gears of War: E-Day"
+      },
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1500000129,
+       "name": "Xbox Series X"
+      }
+     }
+    },
+    "platform": "Xbox Series X"
+   }
+  ]
+ },
+ "links": {
+  "self": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date"
+  },
+  "prev": {
+   "href": null
+  },
+  "next": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=20&limit=20&sort=date"
+  },
+  "first": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date"
+  },
+  "last": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=640&limit=20&sort=date"
+  },
+  "filterOptions": [
+   {
+    "label": "All Reviews",
+    "value": "all",
+    "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date&filterBySentiment=all"
+   },
+   {
+    "label": "Positive Reviews",
+    "value": "positive",
+    "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date&filterBySentiment=positive"
+   },
+   {
+    "label": "Mixed Reviews",
+    "value": "neutral",
+    "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date&filterBySentiment=neutral"
+   },
+   {
+    "label": "Negative Reviews",
+    "value": "negative",
+    "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date&filterBySentiment=negative"
+   }
+  ],
+  "sortOptions": [
+   {
+    "label": "Recently Added",
+    "value": "date",
+    "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=date"
+   },
+   {
+    "label": "Score",
+    "value": "score",
+    "href": "https://backend.metacritic.com/reviews/metacritic/user/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=20&sort=score"
+   }
+  ]
+ },
+ "meta": {
+  "componentName": null,
+  "componentDisplayName": null,
+  "componentType": null
+ }
+}

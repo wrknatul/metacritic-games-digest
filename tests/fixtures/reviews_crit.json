@@ -1,0 +1,177 @@
+{
+ "data": {
+  "id": 1400773610,
+  "totalResults": 74,
+  "items": [
+   {
+    "quote": "The Coalition has elevated the franchise to new heights, crafting an engaging, brutal, and surprisingly intimate campaign that’s full of smart gameplay mechanics and wonderful surprises. It’s the best Gears has ever felt to play, and the best it’s ever looked and sounded on the big screen. Gears of War: E-Day? It's a f.cking masterpiece.",
+    "score": 100,
+    "url": "https://playday.one/2026/10/01/gears-of-war-e-day-review/",
+    "date": "2026-10-01",
+    "author": "",
+    "authorSlug": null,
+    "image": null,
+    "publicationName": "DayOne",
+    "publicationSlug": "dayone",
+    "reviewedProduct": {
+     "id": 1400773610,
+     "type": "games",
+     "title": "Gears of War: E-Day",
+     "url": "/game/gears-of-war-e-day/",
+     "criticScoreSummary": {
+      "url": "/game/gears-of-war-e-day/critic-reviews/?platform=xbox-series-x",
+      "score": 88
+     },
+     "platform": {
+      "id": 1533000075,
+      "name": "Xbox Series X"
+     },
+     "gameTaxonomy": {
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1533000075,
+       "name": "Xbox Series X"
+      }
+     }
+    },
+    "platform": "Xbox Series X"
+   },
+   {
+    "quote": "Gears of War: E-Day is, for me, the best game in the series and The Coalition's finest work to date. Its campaign brings Marcus and Dom back without relying solely on nostalgia, delivering a darker and more brutal take on the origins of the Locust threat. ",
+    "score": 100,
+    "url": "https://generacionxbox.com/analisis-de-gears-of-war-e-day-el-mejor-juego-de-la-saga-esta-aqui",
+    "date": "2026-10-01",
+    "author": "",
+    "authorSlug": null,
+    "image": null,
+    "publicationName": "Generación Xbox",
+    "publicationSlug": "generacion-xbox",
+    "reviewedProduct": {
+     "id": 1400773610,
+     "type": "games",
+     "title": "Gears of War: E-Day",
+     "url": "/game/gears-of-war-e-day/",
+     "criticScoreSummary": {
+      "url": "/game/gears-of-war-e-day/critic-reviews/?platform=xbox-series-x",
+      "score": 88
+     },
+     "platform": {
+      "id": 1533000075,
+      "name": "Xbox Series X"
+     },
+     "gameTaxonomy": {
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1533000075,
+       "name": "Xbox Series X"
+      }
+     }
+    },
+    "platform": "Xbox Series X"
+   },
+   {
+    "quote": "Gears of War: E-Day is a monumental triumph from a developer that irrefutably understands what’s important to fans: Gears isn’t just about tearing through Locust with a chainsaw, it’s about brotherhood, sacrifice, and grief. The Coalition has delivered an unforgettable campaign packed full of fresh ideas whilst staying true to what makes Gears so special. The Locust are back and more terrifying than ever, and blasting them to bits is incredibly satisfying. This is the best the combat has felt in twenty years, and fighting to survive the fall of Kalona will leave you speechless. Through its stunning locations, characters, and cinematics, E-Day is a visual powerhouse and one of the best-looking games I’ve ever seen on Xbox.",
+    "score": 100,
+    "url": "https://www.purexbox.com/reviews/xbox-series-x/gears-of-war-e-day",
+    "date": "2026-10-05",
+    "author": "",
+    "authorSlug": null,
+    "image": null,
+    "publicationName": "Pure Xbox",
+    "publicationSlug": "pure-xbox",
+    "reviewedProduct": {
+     "id": 1400773610,
+     "type": "games",
+     "title": "Gears of War: E-Day",
+     "url": "/game/gears-of-war-e-day/",
+     "criticScoreSummary": {
+      "url": "/game/gears-of-war-e-day/critic-reviews/?platform=xbox-series-x",
+      "score": 88
+     },
+     "platform": {
+      "id": 1533000075,
+      "name": "Xbox Series X"
+     },
+     "gameTaxonomy": {
+      "game": {
+       "id": 1400773610,
+       "name": "Gears of War: E-Day"
+      },
+      "platform": {
+       "id": 1533000075,
+       "name": "Xbox Series X"
+      }
+     }
+    },
+    "platform": "Xbox Series X"
+   }
+  ]
+ },
+ "links": {
+  "self": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score"
+  },
+  "prev": {
+   "href": null
+  },
+  "next": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=10&limit=10&sort=score"
+  },
+  "first": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score"
+  },
+  "last": {
+   "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=70&limit=10&sort=score"
+  },
+  "filterOptions": [
+   {
+    "label": "All Reviews",
+    "value": "all",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score&filterBySentiment=all"
+   },
+   {
+    "label": "Positive Reviews",
+    "value": "positive",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score&filterBySentiment=positive"
+   },
+   {
+    "label": "Mixed Reviews",
+    "value": "neutral",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score&filterBySentiment=neutral"
+   },
+   {
+    "label": "Negative Reviews",
+    "value": "negative",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score&filterBySentiment=negative"
+   }
+  ],
+  "sortOptions": [
+   {
+    "label": "Metascore",
+    "value": "score",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=score"
+   },
+   {
+    "label": "Recently Added",
+    "value": "date",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=date"
+   },
+   {
+    "label": "Publication (A-Z)",
+    "value": "publication",
+    "href": "https://backend.metacritic.com/reviews/metacritic/critic/games/gears-of-war-e-day/web?apiKey=1MOZgmNFxvmljaQR1X9KAij9Mo4xAY3u&offset=0&limit=10&sort=publication"
+   }
+  ]
+ },
+ "meta": {
+  "componentName": null,
+  "componentDisplayName": null,
+  "componentType": null
+ }
+}

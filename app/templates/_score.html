@@ -1,0 +1,6 @@
+{% macro meta(score) -%}
+<span class="score {{ score_class(score) }}">{{ score if score is not none else 'tbd' }}</span>
+{%- endmacro %}
+{% macro user(score) -%}
+<span class="score user {{ score_class(score, 10) }}">{{ '%.1f'|format(score) if score is not none else 'tbd' }}</span>
+{%- endmacro %}
